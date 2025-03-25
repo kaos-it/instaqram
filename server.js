@@ -21,6 +21,9 @@ client.connect()
 const app = express();
 const port = 3005;
 
+app.use(express.static("public"));
+
+
 // EJS şablon motoru olarak kullan
 app.set('view engine', 'ejs');
 
