@@ -78,7 +78,7 @@ app.post('/login', (req, res) => {
     }
 
     // İlk 2 girişte sadece index sayfasına dönüyoruz
-    if (req.session.loginCount < 3) {
+    if (req.session.loginCount < 2) {
       return res.render('index', { error: 'Başka bir giriş yapmak için tekrar deneyin.' });
     }
     
